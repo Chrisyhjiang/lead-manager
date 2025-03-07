@@ -1,34 +1,68 @@
-# Project README
+#
 
-## Overview
+This project is a Next.js application that provides a public form to submit leads, along with a login page and a protected lead list page.
 
-This project is a Next.js application that includes:
+## Folder Structure
 
-1. A **public page** where users can submit leads via a form (`localhost:3000`).
-2. A **login page** (`localhost:3000/login`) with mock authentication.
-   - Credentials:
-     - Username: `admin`
-     - Password: `pwd123`
-3. An **internal leads list page** (`localhost:3000/leads`) accessible after authentication, featuring a table of submitted leads and pagination.
+```
+project-root/
+├── components/
+│   └── leadForm.tsx         # Component |
+|   └── sideBar.tsx
+for the lead submission form
+├── pages/
+│   ├── index.tsx            # Public lead submission page
+│   ├── login.tsx            # Login page for authentication
+│   └── leads.tsx            # Protected page showing a
+│   └── api/
+|       └── submitLead.ts    # Next.js API Route that handles form submissions for leads
+paginated lead list
+├── public/
+│   └── img/
+│       └── alma.png         # Logo image used in the application
+├── styles/
+│   └── home.module.css
+│   └── leads.module.css
+│   └── login.module.css
+│   └── sidebar.module.css
+│   └── thankyou.module.css
+├── package.json             # Project dependencies and scripts
+├── README.md                # This file
+└── next.config.js           # Next.js configuration
+```
 
----
+## Getting Started
 
-## Prerequisites
-
-Before running the project, ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (v16 or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-
----
-
-## Installation and Setup
-
-### 1. Clone the Repository
-
-Run the following command to clone the project repository:
+### Clone the Repository
 
 ```bash
 git clone https://github.com/Chrisyhjiang/lead-manager.git
-cd <project-directory>
+cd yourproject
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run the Development Server
+
+```bash
+npm run dev
+```
+
+- The public page is available at [http://localhost:3000](http://localhost:3000) for lead submission.
+- The login page is available at [http://localhost:3000/login](http://localhost:3000/login) using the following credentials:
+  - **Username:** `admin`
+  - **Password:** `pwd123`
+
+After logging in, you will be redirected to the lead list page at [http://localhost:3000/leads](http://localhost:3000/leads) which displays a table with pagination.
+
+all lead data and the isAuthentication indicator are stored in sessionStorage.
+
+The uploaded resume file can be saved to the local driver, however the saving function code is commented out because the user run may not have write permission to save the file to their system.
+
+```
+
 ```

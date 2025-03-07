@@ -72,7 +72,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <img src="/alma.png" alt="Logo" className={styles.logo} />
+        <img src="/img/alma.png" alt="Logo" className={styles.logo} />
         <h1>Get An Assessment Of Your Immigration Case</h1>
       </header>
 
