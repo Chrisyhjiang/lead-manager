@@ -61,7 +61,7 @@ After logging in, you will be redirected to the lead list page at [http://localh
 
 all lead data and the isAuthentication indicator are stored in sessionStorage.
 
-The uploaded resume file can be saved to the local driver, however the saving function code is commented out because the user run may not have write permission to save the file to their system.
+The uploaded resume file can be saved to the local driver, however the saving function code is commented out because the user may not have write permission to save the file to their system.
 
 ```
 
