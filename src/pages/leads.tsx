@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../styles/leads.module.css";
 import Sidebar from "../components/sideBar";
 import { GoArrowDown, GoArrowUp } from "react-icons/go";
+import { isAuthenticatedUser } from "../utils/auth";
 
 export default function Leads() {
   const router = useRouter();
@@ -15,6 +16,10 @@ export default function Leads() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   useEffect(() => {
+    if (!isAuthenticatedUser()) {
+      router.push("/login");
+      return;
+    }
     // DEBUG: Check what is in sessionStorage
     console.log("Retrieving leads from sessionStorage...");
     const storedLeads = JSON.parse(sessionStorage.getItem("leads") || "[]");

@@ -10,7 +10,8 @@ export const login = (username: string, password: string): boolean => {
     username === hardcodedCredentials.username &&
     password === hardcodedCredentials.password
   ) {
-    isAuthenticated = true;
+    //isAuthenticated = true;
+    sessionStorage.setItem("isAuthenticated", "true");
     return true;
   }
   return false;
@@ -21,5 +22,5 @@ export const logout = () => {
 };
 
 export const isAuthenticatedUser = () => {
-  return isAuthenticated;
+  return sessionStorage.getItem("isAuthenticated") === "true";
 };
