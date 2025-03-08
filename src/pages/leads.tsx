@@ -83,10 +83,20 @@ export default function Leads() {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("isAuthenticated");
+    router.push("/login"); // Redirect to login page
+  };
+
   return (
     <div className={styles.container}>
       <Sidebar />
       <div className={styles.content}>
+        <div className={styles.headerContainer}>
+          <button className={styles.logoutButton} onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
         <h1 className={styles.header}>Leads</h1>
         <div className={styles.searchBar}>
           <input
