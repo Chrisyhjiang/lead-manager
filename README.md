@@ -13,7 +13,7 @@ for the lead submission form
 ├── pages/
 │   ├── index.tsx            # Public lead submission page
 │   ├── login.tsx            # Login page for authentication
-│   └── leads.tsx            # Protected page showing a
+│   └── leads.tsx            # Protected page showing a list of lead
 │   └── api/
 |       └── submitLead.ts    # Next.js API Route that handles form submissions for leads
 paginated lead list
@@ -57,11 +57,12 @@ npm run dev
   - **Username:** `admin`
   - **Password:** `pwd123`
 
-After logging in, you will be redirected to the lead list page at [http://localhost:3000/leads](http://localhost:3000/leads) which displays a table with pagination.
+After logging in, you will be redirected to the lead list page at [http://localhost:3000/leads](http://localhost:3000/leads) which displays a table with submitted leads data with functions, such as pagination, sorting, filtering and
+searching.
 
 all lead data and the isAuthentication indicator are stored in sessionStorage.
 
-The uploaded resume file can be saved to the local driver, however the saving function code is commented out because the user may not have write permission to save the file to their system.
+The uploaded resume file can be saved to the local driver, however the saving function code is removed because the user may not have write permission to save the file to their system.
 
 Pagination and sorting are implemented by clicking the leads list table column header.
 
