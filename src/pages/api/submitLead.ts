@@ -60,6 +60,7 @@ export default async function handler(
       email: fields.email?.toString() || "",
       linkedin: fields.linkedin?.toString() || undefined,
       status: "Pending",
+      submitted: new Date(),
       message: fields.message?.toString() || "",
     };
 

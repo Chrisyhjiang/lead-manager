@@ -5,9 +5,9 @@ export interface Lead {
   country: string;
   email: string;
   linkedin?: string;
-  citizenship: string;
   visa: string[];
   status: string;
   message: string;
   resume: File | null;
+  submitted: Date;
 }

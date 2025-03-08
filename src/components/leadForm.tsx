@@ -35,6 +35,8 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
     formData.append("firstName", data.firstName);
     formData.append("lastName", data.lastName);
     formData.append("email", data.email);
+    formData.append("country", data.country);
+    formData.append("status", data.status);
     if (data.linkedin) formData.append("linkedin", data.linkedin);
     formData.append("visas", data.visa.join(","));
     // if (data.resume) formData.append("resume", data.resume);
@@ -113,7 +115,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
             )}
           </div>
 
-          {/* Country */}
+          {/* Country
           <div className={styles.fieldGroup}>
             <input
               {...register("country", { required: true })}
@@ -123,7 +125,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
             {errors.lastName && (
               <span className={styles.error}>Country is required</span>
             )}
-          </div>
+          </div> */}
 
           {/* Email */}
           <div className={styles.fieldGroup}>
@@ -149,7 +151,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
           {/* Country of Citizenship */}
           <div className={styles.fieldGroup}>
             <select
-              {...register("citizenship", { required: true })}
+              {...register("country", { required: true })}
               className={styles.input}
             >
               <option value="">Select Country of Citizenship</option>

@@ -97,11 +97,14 @@ export default function Leads() {
             Logout
           </button>
         </div>
+
         <h1 className={styles.header}>Leads</h1>
-        <div className={styles.searchBar}>
+
+        {/* Search and Filter */}
+        <div className={styles.searchFilterContainer}>
           <input
             type="text"
-            placeholder="Search"
+            placeholder="🔍 Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className={styles.searchInput}
@@ -111,42 +114,37 @@ export default function Leads() {
             onChange={(e) => setSelectedStatus(e.target.value)}
             className={styles.statusDropdown}
           >
-            <option value="">All Statuses</option>
+            <option value="">Status</option>
             <option value="Pending">Pending</option>
             <option value="Reached Out">Reached Out</option>
           </select>
         </div>
-        <div className={styles.table}>
-          <table>
+
+        {/* Table */}
+        <div className={styles.tableWrapper}>
+          <table className={styles.leadsTable}>
             <thead>
               <tr>
                 <th onClick={() => handleSort("firstName")}>
-                  Name
-                  {sortColumn === "firstName" && (
-                    <span>
-                      {sortOrder === "asc" ? <GoArrowUp /> : <GoArrowDown />}
-                    </span>
-                  )}
+                  Name{" "}
+                  {sortColumn === "firstName" &&
+                    (sortOrder === "asc" ? "▲" : "▼")}
                 </th>
-
-                <th onClick={() => handleSort("email")}>
-                  Email
-                  {sortColumn === "email" && (
-                    <span>
-                      {sortOrder === "asc" ? <GoArrowUp /> : <GoArrowDown />}
-                    </span>
-                  )}
+                <th onClick={() => handleSort("submitted")}>
+                  Submitted
+                  {sortColumn === "submitted" &&
+                    (sortOrder === "asc" ? "▲" : "▼")}
                 </th>
-
                 <th onClick={() => handleSort("status")}>
                   Status
-                  {sortColumn === "status" && (
-                    <span>
-                      {sortOrder === "asc" ? <GoArrowUp /> : <GoArrowDown />}
-                    </span>
-                  )}
+                  {sortColumn === "status" && (sortOrder === "asc" ? "▲" : "▼")}
                 </th>
-                <th>Action</th>
+                <th onClick={() => handleSort("country")}>
+                  Country
+                  {sortColumn === "country" &&
+                    (sortOrder === "asc" ? "▲" : "▼")}
+                </th>
+                <th>Action</th> {/* 🛠 Add back the Action Column */}
               </tr>
             </thead>
             <tbody>
@@ -155,11 +153,13 @@ export default function Leads() {
                   <td>
                     {lead.firstName} {lead.lastName}
                   </td>
-                  <td>{lead.email}</td>
-                  <td>{lead.status || "Pending"}</td>
+                  <td>{new Date(lead.submitted).toLocaleString()}</td>
+                  <td className={styles.status}>{lead.status || "Pending"}</td>
+                  <td>{lead.country || "N/A"}</td>
                   <td>
                     {lead.status !== "Reached Out" && (
                       <button
+                        className={styles.reachOutButton}
                         onClick={() => {
                           setLeads((prevLeads) => {
                             const updatedLeads = prevLeads.map((l) =>
@@ -167,8 +167,6 @@ export default function Leads() {
                                 ? { ...l, status: "Reached Out" }
                                 : l
                             );
-
-                            // Store updated leads in sessionStorage
                             sessionStorage.setItem(
                               "leads",
                               JSON.stringify(updatedLeads)
@@ -186,7 +184,15 @@ export default function Leads() {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination */}
         <div className={styles.pagination}>
+          <button
+            className={currentPage === 1 ? styles.disabled : ""}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
+            ◀
+          </button>
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}
@@ -196,6 +202,12 @@ export default function Leads() {
               {index + 1}
             </button>
           ))}
+          <button
+            className={currentPage === totalPages ? styles.disabled : ""}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
+            ▶
+          </button>
         </div>
       </div>
     </div>
