@@ -29,6 +29,10 @@ export default function Leads() {
     setLeads(storedLeads);
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1); // Reset to first page when filters change
+  }, [searchQuery, selectedStatus]);
+
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch =
       `${lead.firstName} ${lead.lastName}`

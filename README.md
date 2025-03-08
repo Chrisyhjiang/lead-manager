@@ -63,6 +63,8 @@ all lead data and the isAuthentication indicator are stored in sessionStorage.
 
 The uploaded resume file can be saved to the local driver, however the saving function code is commented out because the user may not have write permission to save the file to their system.
 
+Pagination and sorting are implemented by clicking the leads list table column header.
+
 ```
 
 ```
