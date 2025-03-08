@@ -41,17 +41,16 @@ export default async function handler(
       });
 
     const resumeFile = files.resume?.[0];
+
     if (!resumeFile) {
       return res.status(400).json({ error: "Resume file is required" });
     }
 
-    // save the upload file to local driver....
+    // Read the file as a buffer (if you want to process it manually)
+    const fileData = await fs.readFile(resumeFile.filepath);
 
-    // const uniqueFileName = `${crypto.randomUUID()}${path.extname(
-    //   resumeFile.originalFilename || "resume.pdf"
-    // )}`;
-    // const filePath = path.join(uploadDir, uniqueFileName);
-    // await fs.rename(resumeFile.filepath, filePath);
+    // Clean up the uploaded file if necessary
+    await fs.unlink(resumeFile.filepath);
 
     const newLead: Lead = {
       id: crypto.randomUUID(),
@@ -70,6 +69,7 @@ export default async function handler(
     return res.status(200).json({
       message: "Form submitted successfully!",
       lead: newLead,
+      resume: fileData.toString("base64"), // Optional: Send file data
     });
   } catch (error) {
     console.error("Error handling form submission:", error);

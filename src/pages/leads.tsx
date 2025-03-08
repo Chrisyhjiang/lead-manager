@@ -20,20 +20,15 @@ export default function Leads() {
       router.push("/login");
       return;
     }
-    // DEBUG: Check what is in sessionStorage
-    console.log("Retrieving leads from sessionStorage...");
     const storedLeads = JSON.parse(sessionStorage.getItem("leads") || "[]");
 
     if (!Array.isArray(storedLeads)) {
       console.error("Leads in sessionStorage are corrupted:", storedLeads);
       return;
     }
-
-    console.log("Loaded leads:", storedLeads);
     setLeads(storedLeads);
   }, []);
 
-  // Fix filtering: Ensure correct property names
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch =
       `${lead.firstName} ${lead.lastName}`
