@@ -89,7 +89,7 @@ export default function Leads() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.pageContainer}>
       <Sidebar />
       <div className={styles.content}>
         <div className={styles.headerContainer}>

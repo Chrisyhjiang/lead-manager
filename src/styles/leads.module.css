@@ -204,3 +204,18 @@
   background: #ddd;
   cursor: not-allowed;
 }
+
+/* Full page layout: Sidebar & Content */
+.pageContainer {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Content area next to Sidebar */
+.content {
+  flex-grow: 1; /* ✅ Takes remaining space */
+  padding: 40px;
+  background-color: #f8f9fa;
+  margin-left: 250px; /* ✅ Avoids overlay with Sidebar */
+}
