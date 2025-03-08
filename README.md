@@ -1,6 +1,6 @@
 #
 
-This project is a Next.js application that provides a public form to submit leads, along with a login page and a protected lead list page.
+This project is a Next.js application that provides a public form to submit leads, along with a login page and a protected lead list page to display all submitted leads. The lead data are stored in sessionStorage. Accessing leadList page without login will be redirect to the login page.
 
 ## Folder Structure
 
